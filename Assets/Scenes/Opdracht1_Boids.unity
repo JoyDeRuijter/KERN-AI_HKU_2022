@@ -175,7 +175,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 150
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -270,10 +270,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c880310f3dabc44b19df0f8e7707bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfBoids: 10
+  numOfBoids: 50
+  speedLimit: 0.5
   boidPrefab: {fileID: 5957888099207336762, guid: 927c2e35d20b259458dfca1f11eade9e,
     type: 3}
   boidParent: {fileID: 1931900137}
+  minX: -70
+  maxX: 70
+  minY: -40
+  maxY: 40
 --- !u!4 &692787625
 Transform:
   m_ObjectHideFlags: 0
