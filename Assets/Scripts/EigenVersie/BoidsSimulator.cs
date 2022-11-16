@@ -10,6 +10,8 @@ public class BoidsSimulator : MonoBehaviour
     [SerializeField] private float speedLimit = 1;
     [SerializeField] private GameObject boidPrefab;
     [SerializeField] private Transform boidParent;
+    [SerializeField] private Vector2 environmentForce;
+    [SerializeField] private Vector2 goalPosition;
 
     [Space]
     [Header("BOID BORDERS")]
@@ -45,7 +47,7 @@ public class BoidsSimulator : MonoBehaviour
 
     private void MoveBoids()
     {
-        Vector2 v1, v2, v3, v4;
+        Vector2 v1, v2, v3, v4, v5, v6;
 
         foreach (Boid b in boids)
         { 
@@ -53,8 +55,17 @@ public class BoidsSimulator : MonoBehaviour
             v2 = CohesionRule(b);
             v3 = SeparationRule(b);
             v4 = BoundPosition(b);
+            //v5 = GiveForce();
+            v6 = MoveToGoal(b);
 
-            b.velocity = b.velocity + v1 + v2 + v3 + v4;
+            Debug.Log($"Allignment Vector: {v1}");
+            Debug.Log($"Cohesion Vector: {v2}");
+            Debug.Log($"Separation Vector: {v3}");
+            Debug.Log($"BoundPosition Vector: {v4}");
+            //Debug.Log($"GiveForce Vector: {v5}");
+            //Debug.Log($"MoveToGoal Vector: {v6}");
+
+            b.velocity = b.velocity + v1 + v2 + v3 + v4 + v6;
             LimitVelocity(b);
             b.position += b.velocity;
         }
@@ -79,9 +90,9 @@ public class BoidsSimulator : MonoBehaviour
         foreach (Boid b in boids.Where(b => b != _boid))
             perceivedVelocity += b.velocity;
 
-        perceivedVelocity /= (boids.Count - 1);
+        perceivedVelocity /= boids.Count - 1;
 
-        return (perceivedVelocity - _boid.velocity) / 100;
+        return (perceivedVelocity - _boid.velocity) / 8;
     }
 
     private Vector2 SeparationRule(Boid _boid)
@@ -113,4 +124,8 @@ public class BoidsSimulator : MonoBehaviour
 
         return v;
     }
+
+    private Vector2 GiveForce() => environmentForce;
+
+    private Vector2 MoveToGoal(Boid _boid) => (goalPosition - _boid.position) / 100;
 }

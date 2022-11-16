@@ -14,7 +14,7 @@ public class Boid : MonoBehaviour
         transform.position = newPosition;
     }
 
-    public void SetRandomPosition() => position = new Vector2(Random.Range(-69, 69), Random.Range(-39, 39));
+    public void SetRandomPosition() => position = new Vector2(Random.Range(-60, 60), Random.Range(-30, 30));
 
     public void SetRandomVelocity() => velocity = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
 }

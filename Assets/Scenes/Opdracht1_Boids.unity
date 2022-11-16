@@ -275,10 +275,12 @@ MonoBehaviour:
   boidPrefab: {fileID: 5957888099207336762, guid: 927c2e35d20b259458dfca1f11eade9e,
     type: 3}
   boidParent: {fileID: 1931900137}
-  minX: -70
-  maxX: 70
-  minY: -40
-  maxY: 40
+  environmentForce: {x: 0, y: 0}
+  goalPosition: {x: 25, y: -25}
+  minX: -65
+  maxX: 65
+  minY: -35
+  maxY: 35
 --- !u!4 &692787625
 Transform:
   m_ObjectHideFlags: 0
