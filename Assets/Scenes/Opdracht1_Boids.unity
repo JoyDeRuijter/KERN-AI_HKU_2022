@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c880310f3dabc44b19df0f8e7707bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfBoids: 50
+  numOfBoids: 30
   speedLimit: 0.5
   boidPrefab: {fileID: 5957888099207336762, guid: 927c2e35d20b259458dfca1f11eade9e,
     type: 3}

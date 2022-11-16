@@ -51,27 +51,20 @@ public class BoidsSimulator : MonoBehaviour
 
         foreach (Boid b in boids)
         { 
-            v1 = AllignmentRule(b);
+            v1 = AlignmentRule(b);
             v2 = CohesionRule(b);
             v3 = SeparationRule(b);
             v4 = BoundPosition(b);
             //v5 = GiveForce();
-            v6 = MoveToGoal(b);
+            //v6 = MoveToGoal(b);
 
-            Debug.Log($"Allignment Vector: {v1}");
-            Debug.Log($"Cohesion Vector: {v2}");
-            Debug.Log($"Separation Vector: {v3}");
-            Debug.Log($"BoundPosition Vector: {v4}");
-            //Debug.Log($"GiveForce Vector: {v5}");
-            //Debug.Log($"MoveToGoal Vector: {v6}");
-
-            b.velocity = b.velocity + v1 + v2 + v3 + v4 + v6;
+            b.velocity = b.velocity + v1 + v2 + v3 + v4;
             LimitVelocity(b);
             b.position += b.velocity;
         }
     }
 
-    private Vector2 AllignmentRule(Boid _boid)
+    private Vector2 AlignmentRule(Boid _boid)
     {
         Vector2 perceivedCenter = Vector2.zero;
 
